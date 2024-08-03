@@ -20,12 +20,17 @@ export default async function Home() {
 
   const user = session.user.user_metadata as UserResponseData;
   return (
-    <div>
-      <h2>Welcome - {user.full_name}</h2>
-      <Avatar>
+    <div className="flex w-screen h-screen gap-8 items-center justify-center bg-slate-50">
+      <Avatar className="w-[100px] h-[100px] hover:animate-pulse hover:cursor-pointer">
         <AvatarImage src={user.avatar_url} loading="lazy" />
-        <AvatarFallback>user_name</AvatarFallback>
+        <AvatarFallback></AvatarFallback>
       </Avatar>
+      <div className="flex flex-col">
+        <h2 className="text-2xl md:text-3xl">{user.full_name}</h2>
+        <p className="italic text-balance text-base text-zinc-700">
+          {user.user_name}
+        </p>
+      </div>
     </div>
   );
 }
